@@ -107,6 +107,26 @@ class _MyHomePageState extends State<MyHomePage> {
                               return ListTile(
                                 title: Text(snapshot.data[index]['title']),
                                 subtitle: Text(snapshot.data[index]['body']),
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: Text(
+                                              snapshot.data[index]['title']),
+                                          content: Text(
+                                              snapshot.data[index]['body']),
+                                          actions: <Widget>[
+                                            FlatButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('Close'),
+                                            )
+                                          ],
+                                        );
+                                      });
+                                },
                               );
                             });
                     }
