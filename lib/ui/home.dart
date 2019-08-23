@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hi/ui/post.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -9,13 +8,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //API Url
   String url = 'https://jsonplaceholder.typicode.com';
 
+  //Get
   Future<List> getData() async {
     http.Response response = await http.get(url + '/posts');
     return json.decode(response.body);
   }
 
+  //Post
   _post() async {
     var body = json.encode({
       "userId": 120,
@@ -33,9 +35,10 @@ class _MyHomePageState extends State<MyHomePage> {
     print(response.body);
   }
 
+  //Put
   _put() async {
     var body = json.encode({
-      "userId": null,
+      "userId": 120,
       "id": null,
       "title": "Teste",
       "body":
@@ -50,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print(response.body);
   }
 
+  //Delete
   _delete() async {
     http.Response response = await http.delete(url + '/posts/1',
         headers: {"Content-type": "application/json; charset=UTF-8"});
