@@ -1,6 +1,6 @@
-# hi
+# CRUD
 
-A new Flutter project.
+CRUD with Flutter.
 
 ## Getting Started
 
